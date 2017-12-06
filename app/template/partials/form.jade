@@ -1,0 +1,12 @@
+form.standart-form(accept-charset="utf-8" onsubmit="return validate();" action="" method="post")
+	.part.part1
+		p.label Ваше имя и фамилия
+		input.name(name="name", type="text", placeholder="Введите Ваше имя и фамилию", required="")
+	.part.part2
+		p.label Ваше e-mail
+		input.email(name="email", type="email", placeholder="Введите Ваш e-mail", required="")
+	.part.part3
+		p.label Ваш телефон
+		input.phone#phone(name="phone", type="text", required="")
+	.part.part4
+	input.btn.subm(type="submit", value="Принять участие")
