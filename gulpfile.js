@@ -1,5 +1,5 @@
 'use strict';
-
+var basedirname = 'app';
 /*******************************************************************************\
 		1.	DEPENDENCIES
 \*******************************************************************************/
@@ -35,7 +35,7 @@ var gulp = require("gulp"),																// gulp core
 gulp.task('connect', ['watch'], function() {							// files to inject
 	browserSync.init({
 		server: {
-			baseDir: "./app/"																		// base dir
+			baseDir: "./"+basedirname+"/"																		// base dir
 		}
 	});
 });
@@ -43,7 +43,7 @@ gulp.task('connect', ['watch'], function() {							// files to inject
 gulp.task('connect-jade', ['watch-jade'], function() {							// files to inject
 	browserSync.init({
 		server: {
-			baseDir: "./app/"																		// base dir
+			baseDir: "./"+basedirname+"/"																		// base dir
 		}
 	});
 });
@@ -65,16 +65,16 @@ function log(error) {
 
 
 gulp.task('jade', function() {
-  gulp.src('./app/template/pages/*.jade')									// get the files
+  gulp.src('./'+basedirname+'/template/pages/*.jade')									// get the files
     .pipe(jade()).on('error', log)
     .pipe(prettify({indent_size: 2}))											// prettify file
-    .pipe(gulp.dest('./app/'))														// where to put the file
+    .pipe(gulp.dest('./'+basedirname+'/'))														// where to put the file
     .pipe(browserSync.stream());
 });
 
 gulp.task('html', function() {
-  gulp.src('./app/index.html')														// get the files
-    .pipe(gulp.dest('./app/'))														// where to put the file
+  gulp.src('./'+basedirname+'/index.html')														// get the files
+    .pipe(gulp.dest('./'+basedirname+'/'))														// where to put the file
     .pipe(browserSync.stream());
 });
 
@@ -82,19 +82,19 @@ gulp.task('html', function() {
 		3.	WATCHER (WATCHING FILE CHANGES)
 \*******************************************************************************/
 gulp.task('watch-jade', function () {
-	gulp.watch(['./app/template/**/*.jade'], ['jade']),			// watching changes in Jade
+	gulp.watch(['./'+basedirname+'/template/**/*.jade'], ['jade']),			// watching changes in Jade
 	gulp.watch('bower.json', ['wiredep']);									// watching changes in Wiredep
-	gulp.watch(['./app/sass/*/*.scss'], ['scss']),						// watching changes in SASS
-	gulp.watch(['./app/sass/*.scss'], ['scss']),						// watching changes in SASS
-	gulp.watch(['./app/js/*.js'], ['js']);									// watching changes in JS
+	gulp.watch(['./'+basedirname+'/sass/*/*.scss'], ['scss']),						// watching changes in SASS
+	gulp.watch(['./'+basedirname+'/sass/*.scss'], ['scss']),						// watching changes in SASS
+	gulp.watch(['./'+basedirname+'/js/*.js'], ['js']);									// watching changes in JS
 });
 
 
 gulp.task('watch', function () {
-	gulp.watch('./app/index.html', ['html']),								// watching changes in HTML
-	gulp.watch(['./app/sass/*/*.scss'], ['scss']),						// watching changes in SASS
-	gulp.watch(['./app/sass/*.scss'], ['scss']),						// watching changes in SASS
-	gulp.watch(['./app/js/*.js'], ['js']);									// watching changes in JS
+	gulp.watch('./'+basedirname+'/index.html', ['html']),								// watching changes in HTML
+	gulp.watch(['./'+basedirname+'/sass/*/*.scss'], ['scss']),						// watching changes in SASS
+	gulp.watch(['./'+basedirname+'/sass/*.scss'], ['scss']),						// watching changes in SASS
+	gulp.watch(['./'+basedirname+'/js/*.js'], ['js']);									// watching changes in JS
 });
 
 
@@ -103,11 +103,11 @@ gulp.task('watch', function () {
 \*******************************************************************************/
 
 gulp.task('wiredep', function () {
-	gulp.src('./app/template/pages/*.jade')									// get the files
+	gulp.src('./'+basedirname+'/template/pages/*.jade')									// get the files
 		.pipe(wiredep({
 			ignorePath: /^(\.\.\/)*\.\./												// ignore dotted in 'src'
 		}))
-		.pipe(gulp.dest('./app/template/pages/'))							// where to put the changes
+		.pipe(gulp.dest('./'+basedirname+'/template/pages/'))							// where to put the changes
 });
 
 
@@ -116,7 +116,7 @@ gulp.task('wiredep', function () {
 \*******************************************************************************/
 
 gulp.task('scss', function () {
-	gulp.src('./app/sass/*.scss')														// get the files
+	gulp.src('./'+basedirname+'/sass/*.scss')														// get the files
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError({
 			 title:    'Ошибка :(',
@@ -125,7 +125,7 @@ gulp.task('scss', function () {
 		.pipe(sass({includePaths: require('node-bourbon').includePaths}))
 		.pipe(autoprefixer({browsers: ['last 3 versions'], cascade: false}))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest('app/css'))														// where to put the file
+		.pipe(gulp.dest(''+basedirname+'/css'))														// where to put the file
 		.pipe(browserSync.stream());													// browsersync stream
 });
 
@@ -134,7 +134,7 @@ gulp.task('scss', function () {
 \*******************************************************************************/
 
 gulp.task('js', function() {
-	return gulp.src('./app/js/common.js')										// get the files
+	return gulp.src('./'+basedirname+'/js/common.js')										// get the files
 		.pipe(browserSync.stream()); 													// browsersync stream
 });
 
@@ -144,17 +144,17 @@ gulp.task('js', function() {
 
 //sprite task
 gulp.task('sprite', function () {
-  var spriteData = gulp.src('./app/img/sprite/*.png').pipe(spritesmith({
+  var spriteData = gulp.src('./'+basedirname+'/img/sprite/*.png').pipe(spritesmith({
     imgName: 'sprite.png',
     cssName: 'sprite.css',
     algorithm: 'top-down'
   }));
-  return spriteData.pipe(gulp.dest('./app/img/'));
+  return spriteData.pipe(gulp.dest('./'+basedirname+'/img/'));
 });
 
 // Compress Task
 gulp.task('compress', function() {
-  return gulp.src('./app/img/**/*')
+  return gulp.src('./'+basedirname+'/img/**/*')
   .pipe(imagemin())
   .pipe(imageminJpegRecompress({loops: 3})())
   .pipe(gulp.dest('dist/img'))
@@ -162,14 +162,14 @@ gulp.task('compress', function() {
 
 // optimisation png images Task
 gulp.task('pngquant', function() {
-	return gulp.src('./app/img/**/*.png')
+	return gulp.src('./'+basedirname+'/img/**/*.png')
 	.pipe(imageminPngquant({quality: '75-80', speed: 4})())
-	.pipe(gulp.dest('./app/img'))													// where to put the file
+	.pipe(gulp.dest('./'+basedirname+'/img'))													// where to put the file
 	});
 
 // all img task
 gulp.task('images', function () {
-	return gulp.src('./app/img/**/*')												// get the files
+	return gulp.src('./'+basedirname+'/img/**/*')												// get the files
 		.pipe(imagemin()) 																			// optimisation files
 		.pipe(imageminPngquant({quality: '75-80', speed: 4})())
 		.pipe(imageminJpegRecompress({loops: 3})())
@@ -181,7 +181,7 @@ gulp.task('images', function () {
 \*******************************************************************************/
 
 gulp.task('fonts', function () {
-	return gulp.src('./app/fonts/**/*')											// get the files
+	return gulp.src('./'+basedirname+'/fonts/**/*')											// get the files
 		.pipe(gulp.dest('dist/fonts'))												// where to put the file
 });
 
@@ -190,7 +190,7 @@ gulp.task('fonts', function () {
 \*******************************************************************************/
 
 gulp.task('libs', function () {
-	return gulp.src('./app/libs/**/*')											// get the files
+	return gulp.src('./'+basedirname+'/libs/**/*')											// get the files
 		.pipe(gulp.dest('dist/libs'))													// where to put the file
 });
 
@@ -200,8 +200,8 @@ gulp.task('libs', function () {
 
 gulp.task('extrass', function () {
 	return gulp.src([																				// get the files
-		'app/*.*',
-		'!app/*.html'																					// exept '.html'
+		''+basedirname+'/*.*',
+		'!'+basedirname+'/*.html'																					// exept '.html'
 	]).pipe(gulp.dest('dist'))															// where to put the file
 });
 
@@ -210,11 +210,11 @@ gulp.task('extrass', function () {
 \*******************************************************************************/
 //nomincss
 gulp.task('nomincss', function() {
-	return gulp.src('./app/css/*.*')
+	return gulp.src('./'+basedirname+'/css/*.*')
 		.pipe(gulp.dest('dist/nomin/css'))
 	});
 gulp.task('nominjs', function() {
-	return gulp.src('./app/js/*.*')
+	return gulp.src('./'+basedirname+'/js/*.*')
 		.pipe(gulp.dest('dist/nomin/js'))
 	});
 
@@ -233,16 +233,27 @@ gulp.task('build', ['clean'], function () {
 	gulp.start('nomincss');																	// copy nomin css task
 	gulp.start('nominjs');																	// copy nomin js task
 	gulp.start('extrass');
-		return gulp.src('app/*.html')
+		return gulp.src(''+basedirname+'/*.html')
 			.pipe(useref())
 			.pipe(gulpif('*.js', uglify().on('error', gutil.log)))
 			.pipe(gulpif('main.css',uncss({
-            html: ['./app/index.html']
+            html: ['./'+basedirname+'/index.html']
         })))
 			.pipe(gulpif('*.css', csso()))
 			.pipe(gulp.dest('./dist'));
 
 });
+
+gulp.task('min', function(){
+	return gulp.src('app/*.html')
+		.pipe(useref())
+		.pipe(gulpif('*.js', uglify().on('error', gutil.log)))
+		.pipe(gulpif('main.css',uncss({
+			html: ['./app/index.html'],
+		})))
+		.pipe(gulpif('*.css', csso()))
+		.pipe(gulp.dest('./app'));
+})
 
 // gulp.task('jade', function() {
 // 	gulp.start('connect-jade');

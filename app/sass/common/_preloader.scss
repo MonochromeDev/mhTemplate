@@ -1,4 +1,4 @@
-.preloaderGM {
+.preloader {
 	z-index: 999999999;
 	position: fixed;
 	display: block;
@@ -12,11 +12,11 @@
 	-moz-animation: preloader_hide 1s 2s linear forwards, decrease 1s 3s linear forwards;
 	-ms-animation: preloader_hide 1s 2s linear forwards, decrease 1s 3s linear forwards;
 	-webkit-animation: preloader_hide 1s 2s linear forwards, decrease 1s 3s linear forwards; }
-.preloaderGM .pre_circles {
+.preloader .pre_circles {
 	width: 50px;
 	height: 50px;
 	margin: 0 auto; }
-.preloaderGM .pre_circles .pre_circle1 {
+.preloader .pre_circles .pre_circle1 {
 	position: absolute;
 	width: 50px;
 	height: 50px;
@@ -29,7 +29,7 @@
 	-moz-animation: circle_grow 1s 1s linear infinite;
 	-ms-animation: circle_grow 1s 1s linear infinite;
 	opacity: 0; }
-.preloaderGM .pre_circles .pre_circle2 {
+.preloader .pre_circles .pre_circle2 {
 	position: absolute;
 	margin-top: 20px;
 	margin-left: 20px;
