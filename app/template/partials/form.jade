@@ -8,5 +8,15 @@ form.standart-form(accept-charset="utf-8" onsubmit="return validate();" action="
 	.part.part3
 		p.label Ваш телефон
 		input.phone#phone(name="phone", type="text", required="")
-	.part.part4
+	.hidden-inputs.
+		<input type="hidden" name="plan" value="">
+		<input type="hidden" name="sum" value="">
+		<input type="hidden" name="sum_usd" value="">
+		<input type="hidden" name="product" value="">
+		<input type="hidden" name="utm_source" value="<?php print $utm_source; ?>">
+		<input type="hidden" name="utm_medium" value="<?php print $utm_medium; ?>">
+		<input type="hidden" name="utm_term" value="<?php print $utm_term; ?>">
+		<input type="hidden" name="utm_campaign"  value="<?php print $utm_campaign; ?>">
+		<input type="hidden" name="country"  value="">
+		<input type="hidden" name="referer"  value="">
 	input.btn.subm(type="submit", value="Принять участие")
