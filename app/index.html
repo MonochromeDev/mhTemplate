@@ -170,11 +170,13 @@
               email: email,
               phone: phone
             },
-            success: function()
+            success: function(json_data)
             {
               setCookie('name', form.find('.name').val(), 365);
               setCookie('email', form.find('.email').val(), 365);
               setCookie('phone', form.find('.phone').val(), 365);
+              console.log('data sended!');
+              console.log(json_data);
               output = true;
             }
           });
