@@ -43,30 +43,30 @@ This template for landing page development use gulp with browsersync, scss, jade
 
 ** COUTDOWN **
 * to use countdown use this code
-'''
+```
 	<div class='simpleCountdown' data-cookies='yep' data-extra='4,0,0' id="countdown1"></div>
 	<div class='simpleCountdown' data-cookies='nope' data-date='2017,1,18,0' id="countdown2"></div>
-'''
+```
 * or in jade
-'''
+```
 	.simpleCountdown#countdown1(data-cookies='yep' data-extra='4,0,0')
 	.simpleCountdown#countdown2(data-cookies='nope' data-date='2018,1,19,0')
-'''
+```
 
 ** ANCHOR SCROLLER **
 * to simple use of anchor scroller just add class 'btn-anchor' in button and in attr href write name of link to scroll
 * example
-'''
+```
 	<a href="#top" class="btn-anchor">to top</a>
 	<a name="top"></a>
-'''
+```
 
 ** VALIDATION OF FORMS **
 * to validete form uses validator.js, also in phone input uses intlTelInput.min.js and scripts to autocountry code
 
 ** VIDEOPOPUP **
 * to open video in popup use this example (for vimeo and youtube)
-'''
+```
 	<a href="#modal-contact" data-video='vimeo' data-srcvideo='193236599'>Open vimeo</a>
 	<a href="#modal-contact" data-video='youtube' data-srcvideo='NL1tbgaiwlM'>Open youtube</a>
-'''
+```
