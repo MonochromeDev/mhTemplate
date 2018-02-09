@@ -2,16 +2,8 @@
 		Desktop First Method
 \*********************************************/
 /* Medium Devices, Notebooks */
-@media only screen and (max-width : 1130px) {	
+@media only screen and (max-width : 1130px) {
 
-}
-
-
-/* Small Devices, Tablets */
-@media only screen and (max-width : 960px) {	
- .container {width: 720px;}
- br.sm {display: block;}
- br.xs {display: none;}
 
 }
 
@@ -45,7 +37,7 @@
 		-o-animation: none !important;
 		-ms-animation: none !important;
 		animation: none !important;
-	}	
+	}
 }
 
 

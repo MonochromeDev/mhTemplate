@@ -28,9 +28,9 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Заголовок</title>
+    <title>Test</title>
     <!-- SEO-->
-    <meta property="og:title" content="Заголовок">
+    <meta property="og:title" content="Test">
     <meta property="og:description" content="Описание">
     <meta property="og:image" content="">
     <meta property="og:url" content="">
@@ -64,8 +64,47 @@
         <div class="pre_circle2"></div>
       </div>
     </div>
-    <header class="main-header"></header>
-    <footer class="main-footer"></footer>
+    <header class="main-header">
+      <div class="container">
+        <p class="content">this is content</p>
+        <p class="content">this is content</p>
+        <p class="content">this is content</p>
+        <p class="content">this is content</p>
+        <p class="content">this is content</p>
+        <form id="form1" accept-charset="utf-8" onsubmit="return validate(form1);" action="" method="post" class="standart-form">
+          <div class="part part1">
+            <p class="label">Ваше имя и фамилия</p>
+            <input name="name" type="text" placeholder="Введите Ваше имя и фамилию" required="" class="name">
+          </div>
+          <div class="part part2">
+            <p class="label">Ваше e-mail</p>
+            <input name="email" type="email" placeholder="Введите Ваш e-mail" required="" class="email">
+          </div>
+          <div class="part part3">
+            <p class="label">Ваш телефон</p>
+            <input id="phone" name="phone" type="text" required="" class="phone">
+          </div>
+          <div class="hidden-inputs">
+            <input type="hidden" name="plan" value="">
+            <input type="hidden" name="sum" value="">
+            <input type="hidden" name="sum_usd" value="">
+            <input type="hidden" name="product" value="">
+            <input type="hidden" name="utm_source" value="<?php print $utm_source; ?>">
+            <input type="hidden" name="utm_medium" value="<?php print $utm_medium; ?>">
+            <input type="hidden" name="utm_term" value="<?php print $utm_term; ?>">
+            <input type="hidden" name="utm_campaign" value="<?php print $utm_campaign; ?>">
+            <input type="hidden" name="country" value="">
+            <input type="hidden" name="referer" value="">
+          </div>
+          <input type="submit" value="Принять участие" class="btn subm">
+        </form>
+      </div>
+    </header>
+    <footer class="main-footer">
+      <div class="container">
+        <p class="text">This is text</p>
+      </div>
+    </footer>
     <!-- HIDDEN ELEMENTS (MODALS) -->
     <div id="modal-contact" class="modal-overlay">
       <div class="modal-content">
