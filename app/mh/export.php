@@ -13,7 +13,6 @@
   $country = $_POST['country'];
   $plan = $_POST['plan'];
   $sum = $_POST['sum'];
-  $sum_usd = $_POST['sum'];
 
   $send_data = array();
 
@@ -37,7 +36,7 @@
   // $send_data['additional'] = 'no_amo';
 
  if( $curl = curl_init() ) {
-    curl_setopt($curl, CURLOPT_URL, 'https://paysaleshub.monochrome.me/lead_magnet_2');
+    curl_setopt($curl, CURLOPT_URL, ''); // url to send data (action)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($send_data));
