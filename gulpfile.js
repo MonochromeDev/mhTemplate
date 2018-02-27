@@ -163,7 +163,7 @@ gulp.task('compress', function() {
 // optimisation png images Task
 gulp.task('pngquant', function() {
 	return gulp.src('./'+basedirname+'/img/**/*.png')
-	.pipe(imageminPngquant({quality: '75-80', speed: 4})())
+	.pipe(imageminPngquant({quality: '90', speed: 4})())
 	.pipe(gulp.dest('./'+basedirname+'/img'))													// where to put the file
 	});
 
@@ -171,11 +171,19 @@ gulp.task('pngquant', function() {
 gulp.task('images', function () {
 	return gulp.src('./'+basedirname+'/img/**/*')												// get the files
 		.pipe(imagemin()) 																			// optimisation files
-		.pipe(imageminPngquant({quality: '75-80', speed: 4})())
-		.pipe(imageminJpegRecompress({loops: 3})())
+		.pipe(imageminPngquant({quality: '90', speed: 4})())
+		.pipe(imageminJpegRecompress({loops: 1})())
 		.pipe(gulp.dest('dist/img'))													// where to put the file
 });
 
+
+gulp.task('imagesmin', function () {
+	return gulp.src('./'+basedirname+'/img/**/*')												// get the files
+		.pipe(imagemin()) 																			// optimisation files
+		.pipe(imageminPngquant({quality: '90', speed: 4})())
+		.pipe(imageminJpegRecompress({loops: 1})())
+		.pipe(gulp.dest('./'+basedirname+'/img_optimized'))													// where to put the file
+});
 /*******************************************************************************\
 		8.	FONTS TASKS
 \*******************************************************************************/
@@ -249,11 +257,16 @@ gulp.task('min', function(){
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify().on('error', gutil.log)))
 		.pipe(gulpif('main.css',uncss({
-			html: ['./app/index.html'],
+			html: ['./'+basedirname+'/index.html'],
 		})))
 		.pipe(gulpif('*.css', csso()))
 		.pipe(gulp.dest('./app'));
+
 })
+
+
+gulp.task('minify', ['min', 'imagesmin']);
+
 
 // gulp.task('jade', function() {
 // 	gulp.start('connect-jade');
