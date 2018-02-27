@@ -5,7 +5,7 @@ This template for landing page development use gulp with browsersync, scss, jade
 ### What is this repository for? ###
 
 * for front-end development of landing pages for Monochrome development band
-* Version 1.1.2
+* Version 1.2.0
 
 ### How do I get set up? ###
 
@@ -14,7 +14,7 @@ This template for landing page development use gulp with browsersync, scss, jade
 * Dependencies: node v.7 or more
 * Database configuration: no DB
 * How to run: first install packages (npm i) after run command gulp gulp-jade
-* Deployment instructions: gulp build (features in dev. stage)
+* Deployment instructions: gulp minify (minify css, js, and img in current directory)
 
 
 ### JADE ###
@@ -36,12 +36,12 @@ This template for landing page development use gulp with browsersync, scss, jade
 
 * Repo owner or admin holodniak.e from Monochrome development band
 * Email of repo owner holodniak.e@gmail.com
-* Other community or team contact
 
 
 ### FEATURES ###
 
-** COUTDOWN **
+
+### COUTDOWN ###
 * to use countdown use this code
 ```
 	<div class='simpleCountdown' data-cookies='yep' data-extra='4,0,0' id="countdown1"></div>
@@ -53,7 +53,7 @@ This template for landing page development use gulp with browsersync, scss, jade
 	.simpleCountdown#countdown2(data-cookies='nope' data-date='2018,1,19,0')
 ```
 
-** ANCHOR SCROLLER **
+### ANCHOR SCROLLER ###
 * to simple use of anchor scroller just add class 'btn-anchor' in button and in attr href write name of link to scroll
 * example
 ```
@@ -61,12 +61,16 @@ This template for landing page development use gulp with browsersync, scss, jade
 	<a name="top"></a>
 ```
 
-** VALIDATION OF FORMS **
+### VALIDATION OF FORMS ###
 * to validete form uses validator.js, also in phone input uses intlTelInput.min.js and scripts to autocountry code
 
-** VIDEOPOPUP **
+### VIDEOPOPUP ###
 * to open video in popup use this example (for vimeo and youtube)
 ```
 	<a href="#modal-contact" data-video='vimeo' data-srcvideo='193236599'>Open vimeo</a>
 	<a href="#modal-contact" data-video='youtube' data-srcvideo='NL1tbgaiwlM'>Open youtube</a>
 ```
+### ChangeLog ###
+## v. 1.2.0  ##
+* add bootstrap4 grid system
+* update minify function to minify files
