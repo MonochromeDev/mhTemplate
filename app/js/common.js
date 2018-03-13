@@ -1,15 +1,12 @@
 $(document).ready(function() {
-
- // инициализируем wow.js (Раскоментить если надо wow.js)
-	// if ($(window).width() > 1000) {
-	//   wow = new WOW(
-	//     {
-	//       animateClass: 'animated',
-	//       offset:       100
-	//     }
-	//   );
-	//   wow.init();
-	// }
+	var utm_source = getUrlParameter('utm_source');
+	var utm_medium = getUrlParameter('utm_medium');
+	var utm_term = getUrlParameter('utm_term');
+	var utm_campaign = getUrlParameter('utm_campaign');
+	$('input[name=utm_source]').val(utm_source);
+	$('input[name=utm_medium]').val(utm_medium);
+	$('input[name=utm_term]').val(utm_term);
+	$('input[name=utm_campaign]').val(utm_campaign);
 
 });
 
@@ -47,3 +44,22 @@ $('.btn-anchor').on('click', function(e) {
 	e.preventDefault();
 	anchorScroller(this, 1500);
 });
+
+
+// script to get utm
+var getUrlParameter = function getUrlParameter(sParam)
+{
+  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+  for (i = 0; i < sURLVariables.length; i++)
+  {
+    sParameterName = sURLVariables[i].split('=');
+    if (sParameterName[0] === sParam)
+    {
+      return sParameterName[1] === undefined ? true : sParameterName[1];
+    }
+  }
+};
+

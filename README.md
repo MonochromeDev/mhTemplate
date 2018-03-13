@@ -5,7 +5,7 @@ This template for landing page development use gulp with browsersync, scss, jade
 ### What is this repository for? ###
 
 * for front-end development of landing pages for Monochrome development band
-* Version 1.2.0
+* Version 1.2.1
 
 ### How do I get set up? ###
 
@@ -74,3 +74,8 @@ This template for landing page development use gulp with browsersync, scss, jade
 ## v. 1.2.0  ##
 * add bootstrap4 grid system
 * update minify function to minify files
+
+## v. 1.2.1  ##
+* fix bugs 
+* add automating loading utm with javaScript
+* add loading animation to form

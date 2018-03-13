@@ -57,36 +57,44 @@ script.
 	function validate(formid)
 		{
 			var output = false;
-			var name, email, phone;
+			var name, email, phone, utm_source, utm_campaing, utm_medium, utm_term;
 			form = $(formid); // указать ID формы !
-			form.find('input.name').focus();
-			form.find('input.email').focus();
-			form.find('input.phone').focus();
-			form.find('input[type="submit"]').focus();
-			name = form.find('.name').val();
-			email = form.find('.email').val();
-			phone = form.find('.phone').val();
+			form.addClass('loading');
+			form.find('input[name="name"]').focus();
+			form.find('input[name="email"]').focus();
+			form.find('input[name="phone"]').focus();
+			form.find('button[type="submit"]').focus();
+			name = form.find('input[name="name"]').val();
+			email = form.find('input[name="email"]').val();
+			phone = form.find('input[name="phone"]').val();
 			phone = phone.replace(/\s/g, '');
 			if ($('.not_error').length == 3)
 			{
 				$.ajax(
 				{
 					type: "POST",
-					url: 'export.php',
+					url: 'gf/export.php',
 					async: false,
 					data:
 					{
 						name: name,
 						email: email,
-						phone: phone
+						phone: phone,
+						utm_campaing: utm_campaing,
+						utm_source: utm_source,
+						utm_medium: utm_medium,
+						utm_term: utm_term
 					},
 					success: function(json_data)
 					{
-						setCookie('name', form.find('.name').val(), 365);
-						setCookie('email', form.find('.email').val(), 365);
-						setCookie('phone', form.find('.phone').val(), 365);
+						setCookie('name', name, 365);
+						setCookie('email', email, 365);
+						setCookie('phone', phone, 365);
 						console.log('data sended!');
 						console.log(json_data);
+						setTimeout(function(){
+							form.removeClass('loading');
+						}, 5000)
 						output = true;
 					}
 				});
@@ -94,6 +102,7 @@ script.
 			else
 			{
 				form.find('input.error').first().focus();
+				form.removeClass('loading');
 			}
 			return output;
 		};
