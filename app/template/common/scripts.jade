@@ -57,7 +57,7 @@ script.
 	function validate(formid)
 		{
 			var output = false;
-			var name, email, phone, utm_source, utm_campaing, utm_medium, utm_term;
+			var name, email, phone, utm_source, utm_campaign, utm_medium, utm_term;
 			form = $(formid); // указать ID формы !
 			form.addClass('loading');
 			form.find('input[name="name"]').focus();
@@ -67,6 +67,10 @@ script.
 			name = form.find('input[name="name"]').val();
 			email = form.find('input[name="email"]').val();
 			phone = form.find('input[name="phone"]').val();
+			utm_source = form.find('input[name="utm_source"]').val();
+			utm_campaign = form.find('input[name="utm_campaign"]').val();
+			utm_medium = form.find('input[name="utm_medium"]').val();
+			utm_term = form.find('input[name="utm_term"]').val();
 			phone = phone.replace(/\s/g, '');
 			if ($('.not_error').length == 3)
 			{
@@ -80,7 +84,7 @@ script.
 						name: name,
 						email: email,
 						phone: phone,
-						utm_campaing: utm_campaing,
+						utm_campaign: utm_campaign,
 						utm_source: utm_source,
 						utm_medium: utm_medium,
 						utm_term: utm_term
