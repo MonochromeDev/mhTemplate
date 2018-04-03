@@ -253,14 +253,14 @@ gulp.task('build', ['clean'], function () {
 });
 
 gulp.task('min', function(){
-	return gulp.src('app/*.html')
+	return gulp.src(basedirname+'/*.html')
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify().on('error', gutil.log)))
 		.pipe(gulpif('main.css',uncss({
 			html: ['./'+basedirname+'/index.html'],
 		})))
 		.pipe(gulpif('*.css', csso()))
-		.pipe(gulp.dest('./app'));
+		.pipe(gulp.dest('./'+basedirname));
 
 })
 
