@@ -79,3 +79,8 @@ This template for landing page development use gulp with browsersync, scss, jade
 * fix bugs 
 * add automating loading utm with javaScript
 * add loading animation to form
+
+## v. 1.2.2  ##
+* remove php for utm
+* remove old bootstrap
+* change breakpoints in bootstrap4
