@@ -7,7 +7,6 @@ $(document).ready(function() {
 	$('input[name=utm_medium]').val(utm_medium);
 	$('input[name=utm_term]').val(utm_term);
 	$('input[name=utm_campaign]').val(utm_campaign);
-
 });
 
 // script to get utm

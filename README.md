@@ -71,16 +71,28 @@ This template for landing page development use gulp with browsersync, scss, jade
 	<a href="#modal-contact" data-video='youtube' data-srcvideo='NL1tbgaiwlM'>Open youtube</a>
 ```
 ### ChangeLog ###
-## v. 1.2.0  ##
-* add bootstrap4 grid system
-* update minify function to minify files
 
-## v. 1.2.1  ##
-* fix bugs 
-* add automating loading utm with javaScript
-* add loading animation to form
+## v. 1.2.3  ##
+* remove php for utm
+* remove old bootstrap
+* change breakpoints in bootstrap4
 
 ## v. 1.2.2  ##
 * remove php for utm
 * remove old bootstrap
 * change breakpoints in bootstrap4
+
+## v. 1.2.1  ##
+* fix bugs
+* add automating loading utm with javaScript
+* add loading animation to form
+
+## v. 1.2.0  ##
+* add bootstrap4 grid system
+* update minify function to minify files
+
+
+
+
+
+
