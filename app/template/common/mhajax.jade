@@ -1,0 +1,36 @@
+$.ajax(
+{
+	type: "POST",
+	url: 'mh/export.php',
+	async: false,
+	data:
+	{
+		mh_action: mh_action,
+		name: name,
+		email: email,
+		phone: phone,
+		plan: plan,
+		product: product,
+		sum: sum,
+		sum_usd: sum_usd,
+		ga_client_id: ga_client_id,
+		country: country,
+		referer: referer,
+		utm_campaign: utm_campaign,
+		utm_source: utm_source,
+		utm_medium: utm_medium,
+		utm_term: utm_term
+	},
+	success: function(json_data)
+	{
+		setCookie('name', name, 365);
+		setCookie('email', email, 365);
+		setCookie('phone', phone, 365);
+		console.log('data sended!');
+		console.log(json_data);
+		setTimeout(function(){
+			form.removeClass('loading');
+		}, 5000)
+		output = true;
+	}
+});

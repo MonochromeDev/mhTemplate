@@ -58,17 +58,21 @@
     <footer class="main-footer">
       <div class="container"></div>
     </footer>
-    <!-- HIDDEN ELEMENTS (MODALS) -->
-    <div id="modal-contact" class="modal-overlay">
-      <div class="modal-content">
-        <div class="close-button">
-          <div class="one"></div>
-          <div class="two"></div>
+    <!-- HIDDEN ELEMENTS (MODALS)-->
+    <div id="modal-video" class="modal-overlay">
+      <div class="container">
+        <div class="modal-content">
+          <div class="close-button">
+            <div class="one"></div>
+            <div class="two"></div>
+          </div>
+          <div class="video">
+            <div id="video-popup"></div>
+          </div>
         </div>
-        <div id="video-popup"></div>
       </div>
     </div>
-    <!-- END HIDDEN ELEMENTS (MODALS) -->
+    <!-- END HIDDEN ELEMENTS (MODALS)-->
     <!-- build:js js/libs.min.js -->
     <script src="js/AnchorScroller.js"></script>
     <script src="js/cookie.js"></script>
@@ -77,7 +81,6 @@
     <script src="js/script.js"></script>
     <script src="js/popup_script.js"></script>
     <script src="js/jquery.countdown.js"></script>
-    <script src="js/slick.min.js"></script>
     <!-- endbuild -->
     <script src="js/intlTelInput.min.js"></script>
     <script src="js/common.js"></script>
@@ -137,7 +140,7 @@
       function validate(formid)
       {
         var output = false;
-        var name, email, phone, utm_source, utm_campaign, utm_medium, utm_term;
+        var name, email, phone, utm_source, utm_campaign, utm_medium, utm_term, gf_action, mf_action, plan, sum, sum_usd, product, ga_client_id, country, referer;
         form = $(formid);
         form.addClass('loading');
         form.find('input[name="name"]').focus();
@@ -147,11 +150,16 @@
         name = form.find('input[name="name"]').val();
         email = form.find('input[name="email"]').val();
         phone = form.find('input[name="phone"]').val();
+        country = form.find('input[name="country"]').val();
         utm_source = form.find('input[name="utm_source"]').val();
         utm_campaign = form.find('input[name="utm_campaign"]').val();
         utm_medium = form.find('input[name="utm_medium"]').val();
         utm_term = form.find('input[name="utm_term"]').val();
         phone = phone.replace(/\s/g, '');
+        gf_action = ''; // put here google form action;
+        referer = window.location.href;
+        var ga = getCookie('_ga').split('.');
+        ga_client_id = ga[2] + '.' + ga[3];
         if ($('.not_error').length == 3)
         {
           $.ajax(
@@ -161,6 +169,7 @@
             async: false,
             data:
             {
+              gf_action: gf_action,
               name: name,
               email: email,
               phone: phone,
