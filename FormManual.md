@@ -11,7 +11,7 @@ This is guide how setting forms for clients in this template.
 
 * basic data values and names already in the template
 
-### Only sand google form  ###
+### Only send google form  ###
 * basic setting for forms
 * we hav new variables (gf_action, mh_action)
 * gf_action we white action for google form (other variables (name, email, phone, and utm) already in code)
